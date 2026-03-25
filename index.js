@@ -40,40 +40,52 @@ const app = express()
 
 
 app.get("/", (req, res) => {
-    res.json({
+    let inicio = {
         mensagem: "API de Exercícios",
         rotas: [
             "/concatenacao",
             "/condicional",
             "/lacos",
             "/aritmeticos",
+            "/logicos",
+            "/relacionais",
             "/vetores"
         ]
-    })
+    }
+
+    res.send(inicio)
 })
 
 // CONCATENACAO
 app.get("/concatenacao", (req,res)=>{
-    res.json({
-        bomDia: escreverBomDia(),
-        nome: juntarNome()
-    })
+
+    let concatenacao = {
+        nome: escreverBomDia(),
+        sobreNome: juntarNome(),
+        profissao: "Professor"
+    }
+
+    res.send(concatenacao)
 })
 
 // CONDICIONAIS
 app.get("/condicional", (req,res)=>{
-    res.json({
+
+    let condicional = {
         numero: verificarNumero(10),
         aprovacao: verificarAprovacao(2),
         parImpar: verificarParOuImpar(5),
         diaSemana: verificarDiaSemana(1),
         resultado: verificarResultado(1)
-    })
+    }
+
+    res.send(condicional)
 })
 
 // LACOS
 app.get("/lacos",(req,res)=>{
-    res.json({
+
+    let lacos = {
         pares: mostrarPares(),
         numeros: mostrarNumeros(),
         tabuadaFor: mostrarTabuada(10),
@@ -81,52 +93,65 @@ app.get("/lacos",(req,res)=>{
         dobro: mostrarDobro(),
         hello: mostrarHelloWorld(),
         tabuadaWhile: mostrarTabuada1()
-    })
+    }
+
+    res.send(lacos)
 })
 
 // ARITMETICOS
 app.get("/aritmeticos",(req,res) =>{
-    res.json({
+
+    let aritmeticos = {
         soma: somar(5,3),
         subtracao: subtrair(10,4),
         multiplicacao: multiplicar(2,6),
         divisao: dividir(12,3),
         potencia: potencia(2,3),
         raiz: raizQuadrada(16),
-        resto: restoDivisao(10,3),
-    })
-})
-//LOGICOS 
-app.get("/logicos",(req,res) =>{
-    res.json({
-        opLogicoE: verificarE(false),
-        opLogicoNot: verificarNao(true),
-        opLogicoOU: verificarOu(true),
-    })
+        resto: restoDivisao(10,3)
+    }
+
+    res.send(aritmeticos)
 })
 
-//RELACIONAIS 
+// LOGICOS 
+app.get("/logicos",(req,res) =>{
+
+    let logicos = {
+        opLogicoE: verificarE(false),
+        opLogicoNot: verificarNao(true),
+        opLogicoOU: verificarOu(true)
+    }
+
+    res.send(logicos)
+})
+
+// RELACIONAIS 
 app.get("/relacionais", (req,res) =>{
-    res.json({
+
+    let relacionais = {
         diferente: diferente(1,2),
         igual: igual(2,2),
         maior: maior(1,10),
         maiorOuIgual: maiorOuIgual(3,9),
         menor: menor(2,0),
-        menorOuIgual: menorOuIgual(6,3),
-    })
+        menorOuIgual: menorOuIgual(6,3)
+    }
+
+    res.send(relacionais)
 })
-
-
 
 // VETORES
 app.get("/vetores",(req,res)=>{
-    res.json({
+
+    let vetores = {
         acumulacao: acumulacao(),
         adicionar: adicionarElemento(),
         buscar: buscarElemento(),
         remover: removerElemento()
-    })
+    }
+
+    res.send(vetores)
 })
 
 app.listen(3000, ()=>{
